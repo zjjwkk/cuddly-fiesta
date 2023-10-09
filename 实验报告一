@@ -1,0 +1,144 @@
+# 实验一 Git和Markdown基础
+
+班级： 21计科1
+
+学号： B20210302107
+
+姓名： 张金京
+
+Github地址：<https://github.com/yourusername/python_course>
+
+---
+
+## 实验目的
+
+1. Git基础，使用Git进行版本控制
+2. Markdown基础，使用Markdown进行文档编辑
+
+## 实验环境
+
+1. Git
+2. VSCode
+3. VSCode插件
+
+## 实验内容和步骤
+
+### 第一部分 实验环境的安装
+
+1. 安装git，从git官网下载后直接点击可以安装：[git官网地址](https://git-scm.com/)
+2. 从Github克隆课程的仓库：[课程的仓库地址](https://github.com/zhoujing204/python_course)，运行git bash应用（该应用包含在git安装包内），在命令行输入下面的命令（命令运行成功后，课程仓库会默认存放在Windows的用户文件夹下）
+
+```bash
+git clone https://github.com/zhoujing204/python_course.git
+```
+
+如果你在使用`git clone`命令时遇到SSL错误，请运行下面的git命令(这里假设你的Git使用了默认安装目录)：
+
+```bash
+git config --global http.sslCAInfo C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+```
+
+该仓库的课程材料后续会有更新，如果需要更新课程材料，可以在本地课程仓库的目录下运行下面的命令：
+
+```bash
+git pull
+```
+
+3. 注册Github账号，创建一个新的仓库，用于存放实验报告和实验代码。
+4. 安装VScode，下载地址：[Visual Studio Code](https://code.visualstudio.com/)
+5. 安装下列VScode插件
+   - GitLens
+   - Git Graph
+   - Git History
+   - Markdown All in One
+   - Markdown Preview Enhanced
+   - Markdown PDF
+   - Auto-Open Markdown Preview
+   - Paste Image
+   - markdownlint
+
+### 第二部分 Git基础
+
+教材《Python编程从入门到实践》P440附录D：使用Git进行版本控制，按照教材的步骤，完成Git基础的学习。
+
+### 第三部分 learngitbranching.js.org
+
+访问[learngitbranching.js.org](https://learngitbranching.js.org)，如下图所示完成Main部分的Introduction Sequence和Ramping Up两个小节的学习。
+
+[Learngitbranching.js.org](/Experiments/img/2023-07-28-21-07-40.png)
+
+上面你学习到的git命令基本上可以应付百分之九十以上的日常使用，如果你想继续深入学习git，可以：
+
+- 继续学习[learngitbranching.js.org](https://learngitbranching.js.org)后面的几个小节（包括Main和Remote）
+- 在日常的开发中使用git来管理你的代码和文档，用得越多，记得越牢
+- 在git使用过程中，如果遇到任何问题，例如：错误删除了某个分支、从错误的分支拉取了内容等等，请查询[git-flight-rules](https://github.com/k88hudson/git-flight-rules)
+
+### 第四部分 Markdown基础
+
+查看[Markdown cheat-sheet](http://www.markdownguide.org/cheat-sheet)，学习Markdown的基础语法
+
+使用Markdown编辑器（例如VScode）编写本次实验的实验报告，包括[实验过程与结果](#实验过程与结果)、[实验考查](#实验考查)和[实验总结](#实验总结)，并将其导出为 **PDF格式** 来提交。
+
+## 实验过程与结果
+
+请将实验过程中编写的代码和运行结果放在这里，注意代码需要使用markdown的代码块格式化，例如Git命令行语句应该使用下面的格式：
+
+[Git命令](/Experiments/img/2023-07-26-22-48.png)
+
+显示效果如下：
+
+```bash
+git init
+git add .
+git status
+git commit -m "first commit"
+```
+
+如果是Python代码，应该使用下面代码块格式，例如：
+
+[Python代码](/Experiments/img/2023-07-26-22-52-20.png)
+
+显示效果如下：
+
+```python
+def add_binary(a,b):
+    return bin(a+b)[2:]
+```
+
+代码运行结果的文本可以直接粘贴在这里。
+
+a=1,b=0
+
+return 01
+
+**注意：不要使用截图，Markdown文档转换为Pdf格式后，截图可能会无法显示。**
+
+## 实验考查
+
+请使用自己的语言回答下面的问题，这些问题将在实验检查时用于提问和答辩，并要求进行实际的操作。
+
+1. 什么是版本控制？使用Git作为版本控制软件有什么优点？
+   版本控制是指对软件开发过程中各种程序代码、配置文件及说明文档等文件变更的管理，是软件配置管理的核心思想之一。
+   优点：Git有能力高效管理类似Linux内核一样的超大规模项目； 2.Git实现了离线开发、代码审核特性，解决了跨地域协同开发中代码质量和编码协同的问题； 3.分支管理功能强大，便于查询和追溯分支间的提交历史；
+2. 如何使用Git撤销还没有Commit的修改？如何使用Git检出（Checkout）已经以前的Commit？（实际操作）
+   git rm --cached -r. 或者，使用： git reset 也可以取消所有文件的暂存。
+   查看历史本地git版本： git reflog；运行回滚命令 git reset --hard 210ddf5 。
+3. Git中的HEAD是什么？如何让HEAD处于detached HEAD状态？（实际操作）
+   HEAD 是当前分支引用的指针，它总是指向某次commit，默认是上一次的commit。 这表示 HEAD 将是下一次提交的父结点。
+   git checkout <commit_id> 来切换到指定的某一次提交，HEAD 就会处于「detached」状态。
+4. 什么是分支（Branch）？如何创建分支？如何切换分支？（实际操作）
+   分支是主线某个状态的一个复制, 在不影响主线情况下, 可以有新的变化。
+   创建分支 git branch。
+   切换分支 git checkout。
+5. 如何合并分支？git merge和git rebase的区别在哪里？（实际操作）
+   使用 merge 命令合并分支。
+   merge命令不会保留merge的分支的commit。
+6. 如何在Markdown格式的文本中使用标题、数字列表、无序列表和超链接？（实际操作）
+    标题设置： 要创建各级标题，只需要在标题文字前添加井号 #。
+    数字列表： 如果要创建数字列表，在每个列表前添加数字并在其后紧跟一个英文句点 . 即可，注意在句点后留一个空格。
+    无序列表： 如果要创建无序列表，需要在每个列表前面添加减号 - 或星号 * 或加号 +。
+    超链接：链接文本放在中括号内，链接地址放在后面的括号中，链接title可选。
+
+## 实验总结
+
+从记录git最基础知识颜色，到实践中的心得体会，比如一定要有一个.gitignore文件，git冲突判断标准是否有多个人修改了同一个文件同一行。梳理git使用的常规流程。并通过问与答的方式理解了add,commit,pull,push指令的含义。记录tag使用的常使用指令。梳理在githup网站上，多人协同工作的操作方式的理解。流程梳理和流程总结式的理解。
